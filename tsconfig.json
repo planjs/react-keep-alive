@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "lib": ["es6", "dom"],
+    "declaration": true,
+    "sourceMap": false,
+    "strict": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "declarationDir": "typings",
+    "emitDeclarationOnly": true,
+    "outDir": "lib"
+  }
+}

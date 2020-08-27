@@ -1,45 +1,55 @@
 {
   "name": "react-keep-alive",
-  "fileName": "react-keep-alive",
   "version": "0.0.1",
   "description": "react keep alive",
-  "main": "cjs/react-keep-alive.js",
-  "module": "esm/react-keep-alive.js",
-  "sideEffects": false,
-  "scripts": {
-    "prepare": "rollup -c rollup.config.js",
-    "lint": "eslint --fix --ext jsx,ts,tsx src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "keep-alive",
+    "react",
+    "react-keep-alive",
+    "react-router-keep-alive"
+  ],
+  "homepage": "https://github.com/planjs/react-keep-alive#readme",
+  "bugs": {
+    "url": "https://github.com/planjs/react-keep-alive/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/planjs/react-keep-alive.git"
   },
-  "keywords": [
-    "react",
-    "react-keep-alive",
-    "react-router-keep-alive",
-    "keep-alive"
-  ],
+  "license": "ISC",
+  "author": "fupeng",
   "files": [
     "cjs",
     "esm",
     "umd"
   ],
-  "author": "fupeng",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/planjs/react-keep-alive/issues"
+  "main": "cjs/react-keep-alive.js",
+  "module": "esm/react-keep-alive.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "clean": "rimraf -rf typings cjs esm umd",
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint:fix": "eslint --fix --ext jsx,ts,tsx src",
+    "prepare": "rollup -c rollup.config.js && tsc",
+    "release": "./scripts/release.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/planjs/react-keep-alive#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "hoist-non-react-statics": "^3.3.2",
     "js-md5": "^0.7.3",
     "shallowequal": "^1.1.0"
-  },
-  "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -49,6 +59,8 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@rollup/plugin-babel": "^5.2.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
@@ -61,6 +73,9 @@
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.1",
+    "conventional-changelog-cli": "^2.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -70,14 +85,34 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
     "prettier": "^2.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-test-renderer": "^16.13.1",
+    "rimraf": "^3.0.2",
     "rollup": "^2.26.5",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-terser": "^7.0.0",
-    "rollup-plugin-typescript2": "^0.27.2",
+    "standard-version": "^9.0.0",
     "typescript": "3.9.7"
-  }
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "fileName": "react-keep-alive",
+  "lint-staged": {
+    "package.json": [
+      "npx sort-package-json",
+      "git add"
+    ]
+  },
+  "sideEffects": false
 }

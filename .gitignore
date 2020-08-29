@@ -4,3 +4,4 @@ umd/
 cjs/
 esm/
 typings/
+coverage/

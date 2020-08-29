@@ -13,18 +13,7 @@ const globals = {
   'react-dom': 'ReactDOM',
 };
 const external = Object.keys(globals);
-const babelConfig = {
-  presets: ['@babel/preset-typescript', '@babel/preset-react'],
-  plugins: [
-    [
-      '@babel/plugin-proposal-decorators',
-      {
-        legacy: true,
-      },
-    ],
-    '@babel/plugin-proposal-class-properties',
-  ],
-};
+const babelConfig = require('./babel.config');
 
 const cjs = [
   {

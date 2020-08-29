@@ -5,3 +5,4 @@ cjs/
 esm/
 typings/
 coverage/
+/__tests__/__snapshots__/

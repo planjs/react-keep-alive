@@ -23,8 +23,7 @@
     "esm",
     "umd",
     "typings",
-    "example",
-    "__tests__"
+    "example"
   ],
   "main": "cjs/react-keep-alive.js",
   "module": "esm/react-keep-alive.js",
@@ -34,7 +33,7 @@
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint:fix": "eslint --fix --ext jsx,ts,tsx src",
     "prepare": "rollup -c rollup.config.js && tsc",
-    "prepublish": "npm run release",
+    "prepublishOnly": "npm run release",
     "release": "./scripts/release.sh",
     "test": "jest -u"
   },

@@ -13,8 +13,13 @@ export interface IKeepAliveLifecycleImpl {
   componentWillUnactivate?(): void;
 }
 
-export default function bindLifecycle<P = any, S = {}>(Component: React.ComponentClass<P, S>) {
-  const WrappedComponent = (Component as any).WrappedComponent || (Component as any).wrappedComponent || Component;
+export default function bindLifecycle<P = any, S = {}>(
+  Component: React.ComponentClass<P, S>
+) {
+  const WrappedComponent =
+    (Component as any).WrappedComponent ||
+    (Component as any).wrappedComponent ||
+    Component;
 
   const {
     componentDidMount = noop,
@@ -40,7 +45,7 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
     eventEmitter.on(
       [identification, COMMAND.ACTIVATE],
       (this._bindActivate = () => (this._needActivate = true)),
-      true,
+      true
     );
     eventEmitter.on(
       [identification, COMMAND.UNACTIVATE],
@@ -48,7 +53,7 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
         this.componentWillUnactivate && this.componentWillUnactivate.call(this);
         this._unmounted = false;
       }),
-      true,
+      true
     );
     eventEmitter.on(
       [identification, COMMAND.UNMOUNT],
@@ -56,7 +61,7 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
         componentWillUnmount.call(this);
         this._unmounted = true;
       }),
-      true,
+      true
     );
   };
 
@@ -88,7 +93,10 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
       _container: { identification, eventEmitter },
     } = this.props;
     eventEmitter.off([identification, COMMAND.ACTIVATE], this._bindActivate);
-    eventEmitter.off([identification, COMMAND.UNACTIVATE], this._bindUnactivate);
+    eventEmitter.off(
+      [identification, COMMAND.UNACTIVATE],
+      this._bindUnactivate
+    );
     eventEmitter.off([identification, COMMAND.UNMOUNT], this._bindUnmount);
   };
 
@@ -96,12 +104,18 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
     ({
       forwardRef,
       _identificationContextProps: {
-        identification, eventEmitter, activated, keepAlive, extra,
+        identification,
+        eventEmitter,
+        activated,
+        keepAlive,
+        extra,
       },
       ...wrapperProps
     }) => {
       if (!identification) {
-        warn('[React Keep Alive] You should not use bindLifecycle outside a <KeepAlive>.');
+        warn(
+          '[React Keep Alive] You should not use bindLifecycle outside a <KeepAlive/>.'
+        );
         return null;
       }
       return (
@@ -117,7 +131,7 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
           }}
         />
       );
-    },
+    }
   );
 
   const BindLifecycle = React.forwardRef((props: P, ref) => (
@@ -125,7 +139,9 @@ export default function bindLifecycle<P = any, S = {}>(Component: React.Componen
   ));
 
   (BindLifecycle as any).WrappedComponent = WrappedComponent;
-  BindLifecycle.displayName = `${bindLifecycleTypeName}(${getDisplayName(Component as any)})`;
+  BindLifecycle.displayName = `${bindLifecycleTypeName}(${getDisplayName(
+    Component as any
+  )})`;
 
   return hoistNonReactStatics(BindLifecycle, Component) as any;
 }

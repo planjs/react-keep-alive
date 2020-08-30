@@ -6,7 +6,6 @@ import {
   getNodeText,
   fireEvent,
   waitFor,
-  getByText,
 } from '@testing-library/react';
 
 import { Provider, KeepAlive } from '../src';
@@ -52,34 +51,36 @@ const App: React.FC = () => {
   );
 };
 
-test('Test <KeepAlive />', async () => {
-  afterEach(cleanup);
-  const { container } = render(<App />);
-  await waitFor(() => getByTestId(container, 'count'));
-
-  const getCount = () => getByTestId(container, 'count');
-  // init state
-  expect(container).toMatchSnapshot();
-  expect(getNodeText(getCount())).toBe('0');
-
-  // add count
-  const counterAdd = getByTestId(container, 'counterAdd');
-  fireEvent.click(counterAdd);
-  expect(container).toMatchSnapshot();
-  expect(getNodeText(getCount())).toBe('1');
-
-  // hide Counter
-  const toggleBtn = getByTestId(container, 'toggle');
-  fireEvent.click(toggleBtn);
-  try {
+describe('Test <KeepAlive />', () => {
+  test('keep <Counter/>', async () => {
+    afterEach(cleanup);
+    const { container } = render(<App />);
     await waitFor(() => getByTestId(container, 'count'));
-  } catch (e) {
-    expect(e.message).toMatch('Unable to find an element');
-    expect(container).toMatchSnapshot();
-  }
 
-  // show Counter
-  fireEvent.click(toggleBtn);
-  expect(container).toMatchSnapshot();
-  expect(getNodeText(getCount())).toBe('1');
+    const getCount = () => getByTestId(container, 'count');
+    // init state
+    expect(container).toMatchSnapshot();
+    expect(getNodeText(getCount())).toBe('0');
+
+    // add count
+    const counterAdd = getByTestId(container, 'counterAdd');
+    fireEvent.click(counterAdd);
+    expect(container).toMatchSnapshot();
+    expect(getNodeText(getCount())).toBe('1');
+
+    // hide Counter
+    const toggleBtn = getByTestId(container, 'toggle');
+    fireEvent.click(toggleBtn);
+    try {
+      await waitFor(() => getByTestId(container, 'count'));
+    } catch (e) {
+      expect(e.message).toMatch('Unable to find an element');
+      expect(container).toMatchSnapshot();
+    }
+
+    // show Counter
+    fireEvent.click(toggleBtn);
+    expect(container).toMatchSnapshot();
+    expect(getNodeText(getCount())).toBe('1');
+  });
 });

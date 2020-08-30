@@ -34,7 +34,8 @@ interface IListenUpperKeepAliveContainerState {
   activated: boolean;
 }
 
-interface ITriggerLifecycleContainerProps extends IKeepAliveContextConsumerComponentProps {
+interface ITriggerLifecycleContainerProps
+  extends IKeepAliveContextConsumerComponentProps {
   propKey: string;
   extra?: any;
   keepAlive: boolean;
@@ -50,9 +51,11 @@ interface ITriggerLifecycleContainerProps extends IKeepAliveContextConsumerCompo
  * @returns {React.ComponentType<P>}
  */
 export default function keepAliveDecorator<P = any>(
-  Component: React.ComponentType<any>,
+  Component: React.ComponentType<any>
 ): React.ComponentType<P> {
-  class TriggerLifecycleContainer extends React.PureComponent<ITriggerLifecycleContainerProps> {
+  class TriggerLifecycleContainer extends React.PureComponent<
+    ITriggerLifecycleContainerProps
+  > {
     private identification!: string;
 
     private activated = false;
@@ -70,7 +73,9 @@ export default function keepAliveDecorator<P = any>(
         _keepAliveContextProps: { cache },
       } = props;
       if (!cache) {
-        warn('[React Keep Alive] You should not use <KeepAlive> outside a <Provider>.');
+        warn(
+          '[React Keep Alive] You should not use <KeepAlive/> outside a <Provider/>.'
+        );
       }
     }
 
@@ -226,12 +231,16 @@ export default function keepAliveDecorator<P = any>(
 
     shouldComponentUpdate(
       nextProps: IListenUpperKeepAliveContainerProps,
-      nextState: IListenUpperKeepAliveContainerState,
+      nextState: IListenUpperKeepAliveContainerState
     ) {
       if (this.state.activated !== nextState.activated) {
         return true;
       }
-      const { _keepAliveContextProps, _identificationContextProps, ...rest } = this.props;
+      const {
+        _keepAliveContextProps,
+        _identificationContextProps,
+        ...rest
+      } = this.props;
       const {
         _keepAliveContextProps: nextKeepAliveContextProps,
         _identificationContextProps: nextIdentificationContextProps,
@@ -240,8 +249,13 @@ export default function keepAliveDecorator<P = any>(
       if (!shallowEqual(rest, nextRest)) {
         return true;
       }
-      return !shallowEqual(_keepAliveContextProps, nextKeepAliveContextProps)
-        || !shallowEqual(_identificationContextProps, nextIdentificationContextProps);
+      return (
+        !shallowEqual(_keepAliveContextProps, nextKeepAliveContextProps) ||
+        !shallowEqual(
+          _identificationContextProps,
+          nextIdentificationContextProps
+        )
+      );
     }
 
     componentDidMount() {
@@ -253,29 +267,35 @@ export default function keepAliveDecorator<P = any>(
     }
 
     private listenUpperKeepAlive() {
-      const { identification, eventEmitter } = this.props._identificationContextProps;
+      const {
+        identification,
+        eventEmitter,
+      } = this.props._identificationContextProps;
       if (!identification) {
         return;
       }
       eventEmitter.on(
         [identification, COMMAND.ACTIVATE],
         (this.activate = () => this.setState({ activated: true })),
-        true,
+        true
       );
       eventEmitter.on(
         [identification, COMMAND.UNACTIVATE],
         (this.unactivate = () => this.setState({ activated: false })),
-        true,
+        true
       );
       eventEmitter.on(
         [identification, COMMAND.UNMOUNT],
         (this.unmount = () => this.setState({ activated: false })),
-        true,
+        true
       );
     }
 
     private unlistenUpperKeepAlive() {
-      const { identification, eventEmitter } = this.props._identificationContextProps;
+      const {
+        identification,
+        eventEmitter,
+      } = this.props._identificationContextProps;
       if (!identification) {
         return;
       }
@@ -288,7 +308,11 @@ export default function keepAliveDecorator<P = any>(
 
     render() {
       const {
-        _identificationContextProps: { identification, keepAlive: upperKeepAlive, getLifecycle },
+        _identificationContextProps: {
+          identification,
+          keepAlive: upperKeepAlive,
+          getLifecycle,
+        },
         disabled,
         name,
         ...wrapperProps
@@ -299,15 +323,19 @@ export default function keepAliveDecorator<P = any>(
       } = wrapperProps;
       // When the parent KeepAlive component is mounted or unmounted,
       // use the keepAlive prop of the parent KeepAlive component.
-      const propKey = name || getKeyByFiberNode((this as any)._reactInternalFiber);
+      const propKey =
+        name || getKeyByFiberNode((this as any)._reactInternalFiber);
       if (!propKey) {
-        warn('[React Keep Alive] <KeepAlive> components must have key or name.');
+        warn(
+          '[React Keep Alive] <KeepAlive/> components must have key or name.'
+        );
         return null;
       }
       const newKeepAlive = getKeepAlive(propKey, include, exclude, disabled);
-      this.combinedKeepAlive = getLifecycle === undefined || getLifecycle() === LIFECYCLE.UPDATING
-        ? newKeepAlive
-        : identification
+      this.combinedKeepAlive =
+        getLifecycle === undefined || getLifecycle() === LIFECYCLE.UPDATING
+          ? newKeepAlive
+          : identification
           ? upperKeepAlive && newKeepAlive
           : newKeepAlive;
       return activated ? (
@@ -323,7 +351,7 @@ export default function keepAliveDecorator<P = any>(
   }
 
   const KeepAlive = withKeepAliveContextConsumer(
-    withIdentificationContextConsumer(ListenUpperKeepAliveContainer),
+    withIdentificationContextConsumer(ListenUpperKeepAliveContainer)
   ) as any;
 
   return hoistNonReactStatics(KeepAlive, Component);

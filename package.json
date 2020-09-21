@@ -18,6 +18,10 @@
   },
   "license": "ISC",
   "author": "fupeng",
+  "sideEffects": false,
+  "main": "cjs/react-keep-alive.js",
+  "module": "esm/react-keep-alive.js",
+  "typings": "typings/index.d.ts",
   "files": [
     "cjs",
     "esm",
@@ -25,9 +29,6 @@
     "typings",
     "example"
   ],
-  "main": "cjs/react-keep-alive.js",
-  "module": "esm/react-keep-alive.js",
-  "typings": "typings/index.d.ts",
   "scripts": {
     "clean": "rimraf -rf typings cjs esm umd",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -43,6 +44,17 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "package.json": [
+      "npx sort-package-json",
+      "git add"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -50,9 +62,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "@planjs/utils": "^1.0.4",
     "hoist-non-react-statics": "^3.3.2",
-    "js-md5": "^0.7.3",
-    "shallowequal": "^1.1.0"
+    "js-md5": "^0.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -75,7 +87,6 @@
     "@types/react": "^16.9.47",
     "@types/react-dom": "^16.9.8",
     "@types/react-test-renderer": "^16.9.3",
-    "@types/shallowequal": "^1.1.1",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.1.0",
@@ -113,17 +124,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "fileName": "react-keep-alive",
-  "lint-staged": {
-    "package.json": [
-      "npx sort-package-json",
-      "git add"
-    ]
-  },
-  "sideEffects": false
+  "fileName": "react-keep-alive"
 }

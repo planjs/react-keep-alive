@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/planjs/react-keep-alive/compare/stable-0.0.5...stable-0.0.6) (2020-10-07)
+
+
+### Bug Fixes
+
+* build things ([f32acbb](https://github.com/planjs/react-keep-alive/commit/f32acbbeb62c90921730895135e88005409dba53))
+
 ### [0.0.5](https://github.com/planjs/react-keep-alive/compare/stable-0.0.4...stable-0.0.5) (2020-09-21)
 
 

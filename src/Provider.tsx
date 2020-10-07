@@ -55,7 +55,8 @@ export interface IKeepAliveProviderProps {
   getStoreElementContainer?: () => HTMLElement;
 }
 
-export default class KeepAliveProvider extends React.PureComponent<IKeepAliveProviderProps>
+export default class KeepAliveProvider
+  extends React.PureComponent<IKeepAliveProviderProps>
   implements IKeepAliveProviderImpl {
   static displayName = keepAliveProviderTypeName;
 

@@ -5,7 +5,7 @@ import IdentificationContext, {
   IIdentificationContextProps,
 } from '../contexts/IdentificationContext';
 
-type VoidFN = (() => void) | null
+type VoidFN = (() => void) | null;
 
 export default function useKeepAliveEffect(effect: React.EffectCallback) {
   if (!useEffect) {

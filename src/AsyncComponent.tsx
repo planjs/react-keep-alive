@@ -33,9 +33,9 @@ export default class AsyncComponent extends React.Component<IProps, IState> {
     while (sibling) {
       while (true) {
         if (
-          node.type
-          && node.type.displayName
-          && node.type.displayName.indexOf(bindLifecycleTypeName) !== -1
+          node.type &&
+          node.type.displayName &&
+          node.type.displayName.indexOf(bindLifecycleTypeName) !== -1
         ) {
           return;
         }

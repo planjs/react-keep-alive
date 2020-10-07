@@ -9,9 +9,9 @@ function findElementsBetweenComments(node: Node, identification: string): Node[]
   let startCommentExist = false;
   for (const child of childNodes) {
     if (
-      child.nodeType === NODE_TYPES.COMMENT
-      && child.nodeValue.trim() === identification
-      && !startCommentExist
+      child.nodeType === NODE_TYPES.COMMENT &&
+      child.nodeValue.trim() === identification &&
+      !startCommentExist
     ) {
       startCommentExist = true;
     } else if (startCommentExist && child.nodeType === NODE_TYPES.ELEMENT) {

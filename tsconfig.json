@@ -19,7 +19,6 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "declarationDir": "typings",
-    "emitDeclarationOnly": true,
     "outDir": "lib"
   },
   "include": ["src"],

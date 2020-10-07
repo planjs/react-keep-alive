@@ -32,9 +32,7 @@ class KeepAlive extends React.PureComponent<IKeepAliveInnerProps> {
 
   componentDidMount() {
     const { _container } = this.props;
-    const {
-      notNeedActivate, identification, eventEmitter, keepAlive,
-    } = _container;
+    const { notNeedActivate, identification, eventEmitter, keepAlive } = _container;
     notNeedActivate();
     const cb = () => {
       this.mount();
@@ -78,9 +76,7 @@ class KeepAlive extends React.PureComponent<IKeepAliveInnerProps> {
 
   private mount() {
     const {
-      _container: {
-        cache, identification, storeElement, setLifecycle,
-      },
+      _container: { cache, identification, storeElement, setLifecycle },
     } = this.props;
     this.setMounted(true);
     const { renderElement } = cache[identification];
@@ -113,9 +109,7 @@ class KeepAlive extends React.PureComponent<IKeepAliveInnerProps> {
 
   private unmount() {
     const {
-      _container: {
-        identification, storeElement, cache, setLifecycle,
-      },
+      _container: { identification, storeElement, cache, setLifecycle },
     } = this.props;
     const { renderElement, ifStillActivate, reactivate } = cache[identification];
     setLifecycle(LIFECYCLE.UNMOUNTED);

@@ -38,6 +38,8 @@ export interface IKeepAliveProviderImpl {
   existed: boolean;
   providerIdentification: string;
   setCache: (identification: string, value: ICacheItem) => void;
+  clearCache: (...keys: string[]) => void;
+  clearAllCache: () => void;
   unactivate: (identification: string) => void;
   isExisted: () => boolean;
 }
@@ -150,9 +152,8 @@ export default class KeepAliveProvider
     this.eventEmitter.emit([identification, START_MOUNTING_DOM]);
   };
 
-  clearCache = (key: string) => {
-    const identification = md5(`${this.providerIdentification}${key}`);
-    this.unactivate(identification);
+  clearCache = (...keys: string[]) => {
+    keys.forEach((key) => this.unactivate(md5(`${this.providerIdentification}${key}`)));
   };
 
   clearAllCache = () => {
@@ -166,6 +167,8 @@ export default class KeepAliveProvider
       providerIdentification,
       isExisted,
       setCache,
+      clearCache,
+      clearAllCache,
       existed,
       unactivate,
       storeElement,
@@ -184,6 +187,8 @@ export default class KeepAliveProvider
           providerIdentification,
           isExisted,
           setCache,
+          clearCache,
+          clearAllCache,
           unactivate,
           storeElement,
           eventEmitter,

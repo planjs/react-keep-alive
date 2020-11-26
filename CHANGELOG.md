@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/planjs/react-keep-alive/compare/stable-0.0.4...stable-0.0.7) (2020-11-26)
+
+
+### Bug Fixes
+
+* build things ([f32acbb](https://github.com/planjs/react-keep-alive/commit/f32acbbeb62c90921730895135e88005409dba53))
+* provide add method ([035dde9](https://github.com/planjs/react-keep-alive/commit/035dde9f424b5d7be979acc270133340f3a7bcbf))
+* tsconfig ([80d1e1e](https://github.com/planjs/react-keep-alive/commit/80d1e1e23d6f8b0019e93df5c9afd33f34ccb4fb))
+
 ### [0.0.6](https://github.com/planjs/react-keep-alive/compare/stable-0.0.5...stable-0.0.6) (2020-10-07)
 
 

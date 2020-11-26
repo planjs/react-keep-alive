@@ -1,6 +1,6 @@
 {
   "name": "@planjs/react-keep-alive",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "react keep alive",
   "keywords": [
     "keep-alive",
@@ -18,15 +18,14 @@
   },
   "license": "ISC",
   "author": "fupeng",
-  "sideEffects": false,
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "typings": "typings/index.d.ts",
   "files": [
     "dist",
     "typings",
     "example"
   ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "typings": "typings/index.d.ts",
   "scripts": {
     "dev": "stan-builder -w",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -41,17 +40,6 @@
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "package.json": [
-      "npx sort-package-json",
-      "git add"
-    ]
   },
   "config": {
     "commitizen": {
@@ -104,5 +92,17 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "package.json": [
+      "npx sort-package-json",
+      "git add"
+    ]
+  },
+  "sideEffects": false
 }

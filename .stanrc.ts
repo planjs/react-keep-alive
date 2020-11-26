@@ -1,5 +1,5 @@
 export default {
-  bundle: 'rollup',
+  bundler: 'rollup',
   esm: {
     runtimeHelpers: true,
   },

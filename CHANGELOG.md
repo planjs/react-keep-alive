@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/planjs/react-keep-alive/compare/stable-0.0.6...stable-0.0.8) (2020-11-27)
+
+
+### Bug Fixes
+
+* peerDependencies ([0495cd7](https://github.com/planjs/react-keep-alive/commit/0495cd781a8484e08c6014f92aee005d8720200d))
+* provide add method ([035dde9](https://github.com/planjs/react-keep-alive/commit/035dde9f424b5d7be979acc270133340f3a7bcbf))
+
 ### [0.0.7](https://github.com/planjs/react-keep-alive/compare/stable-0.0.4...stable-0.0.7) (2020-11-26)
 
 

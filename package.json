@@ -18,14 +18,15 @@
   },
   "license": "ISC",
   "author": "fupeng",
+  "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "typings": "typings/index.d.ts",
   "files": [
     "dist",
     "typings",
     "example"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "typings": "typings/index.d.ts",
   "scripts": {
     "dev": "stan-builder -w",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -40,6 +41,17 @@
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "package.json": [
+      "npx sort-package-json",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
@@ -62,7 +74,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^11.0.0",
-    "@planjs/fabric": "0.0.4",
+    "@planjs/fabric": "^0.0.2",
     "@testing-library/react": "^10.4.9",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^26.0.10",
@@ -87,22 +99,10 @@
     "typescript": "3.9.7"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+    "react": ">=16.x",
+    "react-dom": ">=16.x"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "package.json": [
-      "npx sort-package-json",
-      "git add"
-    ]
-  },
-  "sideEffects": false
+  }
 }

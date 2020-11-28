@@ -64,8 +64,8 @@ export default function keepAliveDecorator<P = any>(
 
     private lifecycle = LIFECYCLE.MOUNTED;
 
-    constructor(props: ITriggerLifecycleContainerProps, ...args: any) {
-      super(props, ...args);
+    constructor(props: ITriggerLifecycleContainerProps, context: any) {
+      super(props, context);
       const {
         _keepAliveContextProps: { cache },
       } = props;

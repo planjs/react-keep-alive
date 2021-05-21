@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/planjs/react-keep-alive/compare/stable-0.0.8...stable-0.0.9) (2021-05-21)
+
+
+### Features
+
+* injectKeepAlive add props ([aefb480](https://github.com/planjs/react-keep-alive/commit/aefb48098118fca64017a0b0ca58596ce64f55df))
+
 ### [0.0.8](https://github.com/planjs/react-keep-alive/compare/stable-0.0.6...stable-0.0.8) (2020-11-27)
 
 

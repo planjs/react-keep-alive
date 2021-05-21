@@ -1,6 +1,6 @@
 {
   "name": "@planjs/react-keep-alive",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "react keep alive",
   "keywords": [
     "keep-alive",

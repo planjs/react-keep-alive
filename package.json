@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "@planjs/utils": "^1.0.7",
+    "@planjs/utils": "^1.5.1",
     "hoist-non-react-statics": "^3.3.2",
     "js-md5": "^0.7.3"
   },
@@ -74,7 +74,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^11.0.0",
-    "@planjs/fabric": "^0.0.5",
+    "@planjs/fabric": "^0.0.73",
     "@testing-library/react": "^10.4.9",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^26.0.10",
@@ -93,7 +93,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "rimraf": "^3.0.2",
-    "stan-builder": "^0.4.2",
+    "stan-builder": "^0.9.9",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.3.0",
     "typescript": "^4.1.2"

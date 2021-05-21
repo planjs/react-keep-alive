@@ -4,11 +4,12 @@ import { START_MOUNTING_DOM, LIFECYCLE } from './Provider';
 import keepAlive, { COMMAND } from './utils/keepAliveDecorator';
 import changePositionByComment from './utils/changePositionByComment';
 
-export interface KeepAliveProps {
+export interface KeepAliveProps<P = any> {
   key?: string;
   name?: string;
   disabled?: boolean;
   extra?: any;
+  dynamicPros?: (componentProps: P, keepAliveProps: KeepAliveProps) => KeepAliveProps;
 }
 
 interface IKeepAliveInnerProps extends KeepAliveProps {

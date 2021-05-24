@@ -1,9 +1,9 @@
 import React, { useEffect, useContext, useRef } from 'react';
-import { warn } from './debug';
-import { COMMAND } from './keepAliveDecorator';
 import IdentificationContext, {
   IIdentificationContextProps,
 } from '../contexts/IdentificationContext';
+import { warn } from './debug';
+import { COMMAND } from './keepAliveDecorator';
 
 type VoidFN = (() => void) | null;
 
@@ -11,9 +11,8 @@ export default function useKeepAliveEffect(effect: React.EffectCallback) {
   if (!useEffect) {
     warn('[React Keep Alive] useKeepAliveEffect API requires react 16.8 or later.');
   }
-  const { eventEmitter, identification } = useContext<IIdentificationContextProps>(
-    IdentificationContext,
-  );
+  const { eventEmitter, identification } =
+    useContext<IIdentificationContextProps>(IdentificationContext);
   const effectRef: React.MutableRefObject<React.EffectCallback> = useRef(effect);
   effectRef.current = effect;
   useEffect(() => {

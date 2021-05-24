@@ -59,7 +59,8 @@ export interface IKeepAliveProviderProps {
 
 export default class KeepAliveProvider
   extends React.PureComponent<IKeepAliveProviderProps>
-  implements IKeepAliveProviderImpl {
+  implements IKeepAliveProviderImpl
+{
   static displayName = keepAliveProviderTypeName;
 
   static defaultProps = {

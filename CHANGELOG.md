@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.10 (2021-07-05)
+
+
+### Bug Fixes
+
+* action node version ([b06c5bd](https://github.com/planjs/react-keep-alive/commit/b06c5bd72c2d4a26f7dfe8d7e9e9fbb61d652194))
+
 ### [0.0.9](https://github.com/planjs/react-keep-alive/compare/stable-0.0.8...stable-0.0.9) (2021-05-21)
 
 

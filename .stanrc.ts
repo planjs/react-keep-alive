@@ -3,11 +3,8 @@ export default {
   esm: {
     runtimeHelpers: true,
   },
-  cjs: {
-    minify: true,
-  },
+  cjs: true,
   umd: {
-    minify: true,
     globals: {
       react: 'React',
       'react-dom': 'ReactDOM',

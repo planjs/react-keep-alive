@@ -6,7 +6,6 @@
     "target": "esnext",
     "lib": ["es6", "dom"],
     "declaration": true,
-    "sourceMap": false,
     "strict": true,
     "jsx": "react",
     "moduleResolution": "node",

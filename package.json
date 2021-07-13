@@ -20,6 +20,8 @@
   "author": "fupeng",
   "sideEffects": false,
   "main": "dist/index.cjs.js",
+  "umd:main": "lib/index.umd.js",
+  "unpkg": "lib/index.umd.min.js",
   "module": "dist/index.esm.js",
   "typings": "typings/index.d.ts",
   "files": [

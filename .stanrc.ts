@@ -5,6 +5,7 @@ export default {
   },
   cjs: true,
   umd: {
+    minify: true,
     globals: {
       react: 'React',
       'react-dom': 'ReactDOM',

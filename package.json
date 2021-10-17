@@ -26,8 +26,7 @@
   "typings": "typings/index.d.ts",
   "files": [
     "dist",
-    "typings",
-    "example"
+    "typings"
   ],
   "scripts": {
     "dev": "stan-builder -w",

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   render,
   getByTestId,
@@ -74,7 +74,7 @@ describe('Test <KeepAlive />', () => {
     try {
       await waitFor(() => getByTestId(container, 'count'));
     } catch (e) {
-      expect(e.message).toMatch('Unable to find an element');
+      expect((e as Error).message).toMatch('Unable to find an element');
       expect(container).toMatchSnapshot();
     }
 
